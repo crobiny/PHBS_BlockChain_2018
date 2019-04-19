@@ -11,7 +11,7 @@ In response to this demand, a lot of research work has been proposed in recent y
 
 ## 2.Privacy Problem of Block Chain
 
-Bitcoin trading does not require the user's real identity, but block-chain technology such as Bitcoin is not an **anonymous** system. Strictly speaking, Bitcoin is an **pseudonym** system-- the so-called pseudonym, that is, an identity unrelated to the real identity we use in the network. For example, in the transaction of Bitcoin system, users do not need to use their real name, but use public key hash value as the  trading identification. In this case, the public key hash value represents the identity of the user, independent of the real name, so Bitcoin is pseudonymous.
+Bitcoin trading does not require the user's real identity, but block-chain technology such as Bitcoin is not an **anonymous** system. Strictly speaking, Bitcoin is an **pseudonym** system-- the so-called pseudonym, that is, an identity unrelated to the real identity we use in the network. 
 
 But anonymity is different from pseudonym. In computer science, anonymity refers to the so-called unrelated pseudonym, that is, from the perspective of an attacker, it is impossible to correlate any two interactions between users and the system. In Bitcoin, because users repeatedly use public key hash values as transaction identifiers, it is obvious that transactions can be correlated. Bitcoin is not anonymous
 
@@ -24,3 +24,23 @@ Dash coin uses a key technology called Coinjoin. Simply speaking, coin technolog
 **Drawback**
 
 In Dash Coin, there is still the risk that the master node will be controlled and the malicious users will participate in the currency mixing, which will lead to the leakage of user privacy to a certain extent.
+
+### 3.2 Monero
+
+Monero Coin proposes a hybrid encryption scheme independent of the central node. There are two key technologies of Monero Coin: **stealth addresses** and **ring signature**.
+
+**Stealth addresses** is to solve the problem of the relevance of the output address of the input. Whenever the sender wants to send a sum of money to the recipient, he first calculates a one-time public key by using elliptic curve encryption through the recipient's address (which is regenerated each time). Then the sender sends the public key along with an additional information to the block chain, and the recipient can root it. Each transaction block is detected by its own private key to determine whether the sender has sent the amount. When the recipient wants to use the amount, it can calculate a signature private key based on its own private key and transaction information, and use this private key to sign the transaction. This private key is used to sign a transaction, because the public key is one-time. Private keys are also disposable
+
+Although **stealth addresses** can ensure that the addresses of the recipients change every time, so that the external attackers can not see the address correlation, they can not guarantee the anonymity between the sender and the recipient. Therefore, Monero coin proposes a ring signature scheme.
+
+**Ring signature:** Whenever the sender wants to establish a transaction, he will sign the transaction with his own private key and several public keys randomly selected from the public keys of other users. When verifying the signature, he also needs to use other people's public keys and parameters in the signature. At the same time, the sender's signature must also provide key image to provide proof of identity. Both the private key and key image are used. One secret at a time to ensure untraceability
+
+**Drawback**
+
+Ring signatures still need to be mixed with other users'public keys, so they may encounter malicious users to expose their privacy. In addition, in 90% of cases, the size of the ring is between 2 and 4, so anonymity is greatly reduced.
+
+### 3.3 ZCash
+
+#### 3.3.1 Zero Knowledge Proof and zk-SNARK
+
+
