@@ -29,13 +29,30 @@ In Dash Coin, there is still the risk that the master node will be controlled an
 
 Monero Coin proposes a hybrid encryption scheme independent of the central node. There are two key technologies of Monero Coin: **stealth addresses** and **ring signature**.
 
+#### 3.2.1 Stealth addresses
+
 **Stealth addresses** is to solve the problem of the relevance of the output address of the input. Whenever the sender wants to send a sum of money to the recipient, he first calculates a one-time public key by using elliptic curve encryption through the recipient's address (which is regenerated each time). Then the sender sends the public key along with an additional information to the block chain, and the recipient can root it. Each transaction block is detected by its own private key to determine whether the sender has sent the amount. When the recipient wants to use the amount, it can calculate a signature private key based on its own private key and transaction information, and use this private key to sign the transaction. This private key is used to sign a transaction, because the public key is one-time. Private keys are also disposable
 
-Although **stealth addresses** can ensure that the addresses of the recipients change every time, so that the external attackers can not see the address correlation, they can not guarantee the anonymity between the sender and the recipient. Therefore, Monero coin proposes a ring signature scheme.
+Different from BTC which only has one pair of keys(public key and private key), Menero has two pairs of keys(**spend key** and **view key**)
 
-**Ring signature:** Whenever the sender wants to establish a transaction, he will sign the transaction with his own private key and several public keys randomly selected from the public keys of other users. When verifying the signature, he also needs to use other people's public keys and parameters in the signature. At the same time, the sender's signature must also provide key image to provide proof of identity. Both the private key and key image are used. One secret at a time to ensure untraceability
+**Spend key**: In spend key, the public key is used to join ring transaction and verify key image, and the private key is used to create a key image.
+
+**View key**: In view key, the public key is used to create **Stealth addresses**, and the private key is used to scan the whole blockchain and check whether there are some transactions sent to itself.
+
+The sender calculates a temporary one-time stealth address by using the public key of the receiver's view key, and sends the money to the address. Then the receiver scans the block chain and finds that the transaction can take the money away by using the private key of his view key. Others on the network do not know who the transaction is sent to, only the recipient himself. Knowing ensures anonymity of transactions
+
+#### 3.2.2 Ring Signature
+
+Whenever the sender wants to establish a transaction, he will sign the transaction with his own private key and several public keys randomly selected from the public keys of other users. When verifying the signature, he also needs to use other people's public keys and parameters in the signature. At the same time, the sender's signature must also provide key image to provide proof of identity. Both the private key and key image are used. One secret at a time to ensure untraceability
+
+But how to avoid double spend attack?
+
+Use key image generated from private spend key
+
 
 **Drawback**
+
+Although **stealth addresses** can ensure that the addresses of the recipients change every time, so that the external attackers can not see the address correlation, they can not guarantee the anonymity between the sender and the recipient. Therefore, Monero coin proposes a ring signature scheme.
 
 Ring signatures still need to be mixed with other users'public keys, so they may encounter malicious users to expose their privacy. In addition, in 90% of cases, the size of the ring is between 2 and 4, so anonymity is greatly reduced.
 
