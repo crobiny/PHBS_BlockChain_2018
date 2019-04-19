@@ -43,4 +43,19 @@ Ring signatures still need to be mixed with other users'public keys, so they may
 
 #### 3.3.1 Zero Knowledge Proof and zk-SNARK
 
+**Zero Knowledge Proof**：The prover can convince the verifier that an assertion is correct without providing any useful information to the verifier。In the design of ZCash, a technique called zk-SNARK was adopted.
 
+zk-SNARK needs a NP problem as a basic problem. It is not feasible to guess the solution of a NP complete problem (NPC problem, hereinafter referred to as NP problem) with a large input by force, but it is faster to verify that a solution is corresponding to NP problem.
+
+#### 3.3.2 Operating principle of ZCcsh
+The system uses zk-SNARK to construct a decentralized mixing pool. Anonymity can be achieved by **mint** and **pour** operations.
+
+**Mint**： The user writes commitment to a list using a certain amount of `ZCash` to exchange the equivalent `commitment`. The commitment must be calculated by a one-time serial number and the user's private key, and it is irreversible.
+
+
+
+
+
+## 4.Comparison
+
+## 5.Expectation
