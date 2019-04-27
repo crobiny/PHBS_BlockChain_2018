@@ -30,8 +30,7 @@ A simple way to mix all currencies is to simply merge all transactions based on 
 *Fig 1. Merge two user transactions into one Coinjoin transaction*
 In this transaction, 0.05BTC are sent out using **Coinjoin**. In order to track the source of the funds, you only need to add up the amount on the right and match the amount on the left.
 
-If we reconstitute the transaction, we will find that：
-* 0.05 + 0.0499 + 0.0001(fee) = 0.10BTC
+If we reconstitute the transaction, we will find that：* 0.05 + 0.0499 + 0.0001(fee) = 0.10BTC
 * 0.0499 + 0.05940182 + 0.0001(fee) = 0.10940182BTC
 
 
