@@ -27,6 +27,9 @@ Dash coin uses a key technology called Coinjoin. Simply speaking, coin technolog
 
 A simple way to mix all currencies is to simply merge all transactions based on current BTC.
 ![](coinjoin.png)
+*Fig 1. Merge two user transactions into one Coinjoin transaction*
+
+
 
 **Drawback**
 
