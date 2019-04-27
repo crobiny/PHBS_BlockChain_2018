@@ -44,7 +44,12 @@ Darksend
 * Use the same face value of 0.1DASH, 1DASH, 10DASH and 100DASH
 * Involve at least 3 transactions
 ![](darksend.png)
-*Fig 2. When 3 users'funds are merged into a common transaction, users will export funds in a new disrupted form.*
+
+*Fig 2. When 3 users'funds are merged into one common transaction, users will export funds in a new disrupted form.*
+
+In order to deal with Denial-of service(DOS) attacks. We propose that all users submit the transaction as a deposit to the mine when they join, and the transaction is finally exported to the user, at the same time, they can pay a high salary to the miners. That is to say, when a user raises a request to the mix pool, the transaction begins with a deposit. If the user does not cooperate at some time, such as refusing to sign, the deposit transaction will automatically broadcast over the whole network. The cost of persistent attacks on anonymous networks is extremely high.
+To address the possible DOS attacks, we propose all users submit a transaction as collateral to the pool when joining. This transaction will be made out to themselves and will pay a high fee to miners. In the case when a user submits a request to the mixing pool, they must provide collateral at the beginning of this exchange. If at any point any user fails to cooperate, by refusing to sign for example, the collateral transaction will automatically be broadcasted. This will make it expensive to do a sustained attack on the privacy network.
+接下是应对可能的DOS攻击，我们提议所有用户在加入时把交易以押金的形式提交到矿池去，交易最后还是输出到用户，同时又可向矿工支付一笔高的报酬。也就是说，用户向混币池提高请求时，交易一开始就要提供押金。如果某个时候用户不合作了，例如拒绝签名，押金交易会自动在全网广播，若要在匿名网络上进行持续攻击，所付出的代价是极其高昂的。
 
 **Drawback**
 
