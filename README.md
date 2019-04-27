@@ -28,6 +28,7 @@ Dash coin uses a key technology called Coinjoin. Simply speaking, coin technolog
 A simple way to mix all currencies is to simply merge all transactions based on current BTC.
 ![](coinjoin.png)
 *Fig 1. Merge two user transactions into one Coinjoin transaction*
+
 In this transaction, 0.05BTC are sent out using **Coinjoin**. In order to track the source of the funds, you only need to add up the amount on the right and match the amount on the left.
 
 If we reconstitute the transaction, we will find that：
@@ -47,9 +48,17 @@ Darksend
 
 *Fig 2. When 3 users'funds are merged into one common transaction, users will export funds in a new disrupted form.*
 
-In order to deal with Denial-of service(DOS) attacks. We propose that all users submit the transaction as a deposit to the mine when they join, and the transaction is finally exported to the user, at the same time, they can pay a high salary to the miners. That is to say, when a user raises a request to the mix pool, the transaction begins with a deposit. If the user does not cooperate at some time, such as refusing to sign, the deposit transaction will automatically broadcast over the whole network. The cost of persistent attacks on anonymous networks is extremely high.
-To address the possible DOS attacks, we propose all users submit a transaction as collateral to the pool when joining. This transaction will be made out to themselves and will pay a high fee to miners. In the case when a user submits a request to the mixing pool, they must provide collateral at the beginning of this exchange. If at any point any user fails to cooperate, by refusing to sign for example, the collateral transaction will automatically be broadcasted. This will make it expensive to do a sustained attack on the privacy network.
-接下是应对可能的DOS攻击，我们提议所有用户在加入时把交易以押金的形式提交到矿池去，交易最后还是输出到用户，同时又可向矿工支付一笔高的报酬。也就是说，用户向混币池提高请求时，交易一开始就要提供押金。如果某个时候用户不合作了，例如拒绝签名，押金交易会自动在全网广播，若要在匿名网络上进行持续攻击，所付出的代价是极其高昂的。
+In order to deal with Denial-of service(DOS) attacks. Darksend stipulates that the user submits the transaction in the form of a deposit to the mine, so the user will provide the miners with high remuneration. That is to say, a deposit is required at the beginning of a user's request to the mixing pool. If the user does not cooperate at some time, such as refusing to sign, the deposit transaction will automatically broadcast over the whole network. The cost of persistent attacks on anonymous networks is extremely high.
+
+The mixing limit of Darksend is 1000 DASH per round, and multiple rounds of mixing can mix a considerable amount of money anonymously. Each round of the Draksend process can be considered as an independent event to enhance the anonymity of user funds.
+
+| Depth of the Chain|Possible users|
+|:------:|:------:|
+|2   | 9   |
+|4 |  81  |
+|8  |  6561   |
+
+
 
 **Drawback**
 
