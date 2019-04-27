@@ -30,11 +30,21 @@ A simple way to mix all currencies is to simply merge all transactions based on 
 *Fig 1. Merge two user transactions into one Coinjoin transaction*
 In this transaction, 0.05BTC are sent out using **Coinjoin**. In order to track the source of the funds, you only need to add up the amount on the right and match the amount on the left.
 
-If we reconstitute the transaction, we will find that：* 0.05 + 0.0499 + 0.0001(fee) = 0.10BTC
+If we reconstitute the transaction, we will find that：
+* 0.05 + 0.0499 + 0.0001(fee) = 0.10BTC
 * 0.0499 + 0.05940182 + 0.0001(fee) = 0.10940182BTC
 
+As more users join the **Coinjoin** process, the difficulty of getting results will increase exponentially. But it is still possible to trace back all transactions.
 
 
+#### 3.1.2 Improved Coinjoin: Darksend
+
+Darksend
+* Merge multiple transactions into one transaction
+* Use the same face value of 0.1DASH, 1DASH, 10DASH and 100DASH
+* Involve at least 3 transactions
+![](darksend.png)
+*Fig 2. When 3 users'funds are merged into a common transaction, users will export funds in a new disrupted form.*
 
 **Drawback**
 
