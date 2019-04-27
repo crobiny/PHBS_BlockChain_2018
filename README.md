@@ -19,7 +19,14 @@ But anonymity is different from pseudonym. In computer science, anonymity refers
 
 ### 3.1 Dash
 
+To achieve anonymity, we need to make currency fully interchangeable. Interchangeability is the property of currency, which decides that all units of currency should be equal. Currency should not have any connection with the transaction records made with that currency, so that all currencies are equal. At the same time, any user ensures that every transaction in public accounts is honest without affecting the privacy of others.
+
 Dash coin uses a key technology called Coinjoin. Simply speaking, coin technology is a technology that mixes multiple transactions of multiple users (at least three) through some master nodes to form a single transaction. In a coin, each user provides an input and output address, and then sends it to the main node for mixing (i.e., arbitrary exchange). Input and output addresses). Trading can only be done with 0.1, 1, 10, 100 Dash Coins, which makes it more difficult for attackers to guess the degree of transaction correlation from the perspective of amount.
+
+#### 3.1.1 A simple way to mix all currencies: Coinjoin
+
+A simple way to mix all currencies is to simply merge all transactions based on current BTC.
+![][coinjoin.png]
 
 **Drawback**
 
