@@ -69,9 +69,6 @@ Through Darksend's multi-round mixing technology, the probability of tracking a 
 
 In this way, unless the attacker controls most Masternodes, it is almost impossible to trace back a specified transaction.
 
-**Masked masternodes**
-
-
 
 **Drawback**
 
