@@ -86,8 +86,11 @@ To make the whole process clearer, here is an example as following. Suppose Alic
 
 1. Bob chooses 2 numbers *a* and *b* as his private key. According to the ECC curve, Bob calculates the corresponding public key *A=aG* and *B=bG*. G is a common base point on the curve. Bob broadcasts these 2 public keys *A* and *B* on the whole network.
 1. Alice chooses a random integer *r* as another private key, and calculates <a href="https://www.codecogs.com/eqnedit.php?latex=P=H_{s}(rA)G&plus;b" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P=H_{s}(rA)G&plus;b" title="P=H_{s}(rA)G+b" /></a>
-1.
-
+1. Alice calculates *R=rG*
+1. Alice broadcasts the transaction record and number *P* and *R* on the whole block chain. Because the hash function is used, according to these 2 open numbers (*P* and *R*) , no one can deduce how much *A* and *B* are, neither can it know the payee is Bob.
+![](coinjoin.png)
+*Fig 3. Standard transaction structure*
+1. Bob scans the whole blockchain, and calculates that <a href="https://www.codecogs.com/eqnedit.php?latex=P^{'}=H_{s}(aR)G&plus;b" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P^{'}=H_{s}(aR)G&plus;b" title="P^{'}=H_{s}(aR)G+b" /></a>. If this money is for Bob, he will find that *P'=P*(Because Alice uses *A* that Bob broadcasts, and calculates *R=rA*. According to ECC algorithm, *rA=aR*, so <a href="https://www.codecogs.com/eqnedit.php?latex=P^{'}=H_{s}(aR)G&plus;b=H_{s}(rA)G&plus;b=P" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P^{'}=H_{s}(aR)G&plus;b=H_{s}(rA)G&plus;b=P" title="P^{'}=H_{s}(aR)G+b=H_{s}(rA)G+b=P" /></a>. So Bob knows that the money belongs to him.)
 
 
 Different from BTC which only has one pair of keys(public key and private key), Menero has two pairs of keys(**spend key** and **view key**)
