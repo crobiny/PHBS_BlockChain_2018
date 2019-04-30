@@ -82,7 +82,11 @@ Monero Coin proposes a hybrid encryption scheme independent of the central node.
 
 **Stealth addresses** is to solve the problem of the relevance of the output address of the input. Each time a sender wants to initiate a transaction, he first calculates a one-time temporary intermediate address by using the public key information of the receiver, and then sends the amount to the intermediate address. The receiver then finds the transaction by using his own public and private key information, and then carries on the expense. In this way, other users on the network, including miners, can not determine who the intermediate address belongs to, but the validity of the transaction can still be verified, and since the address is one-time, each time it is randomly generated, the attacker can not make any association with the real sender and receiver.
 
-To make the whole process clearer, here is an example as following:
+To make the whole process clearer, here is an example as following. Suppose Alice wants to transfer money to Bob
+
+1. Bob chooses 2 numbers *a* and *b* as his private key. According to the ECC curve, Bob calculates the corresponding public key *A=aG* and *B=bG*. G is a common base point on the curve. Bob broadcasts these 2 public keys *A* and *B* on the whole network.
+1. Alice chooses a random integer *r* as another private key, and calculates <a href="https://www.codecogs.com/eqnedit.php?latex=P=H_{s}(rA)G&plus;b" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P=H_{s}(rA)G&plus;b" title="P=H_{s}(rA)G+b" /></a>
+1.
 
 
 
@@ -108,21 +112,6 @@ Use key image generated from private spend key
 Although **stealth addresses** can ensure that the addresses of the recipients change every time, so that the external attackers can not see the address correlation, they can not guarantee the anonymity between the sender and the recipient. Therefore, Monero coin proposes a ring signature scheme.
 
 Ring signatures still need to be mixed with other users'public keys, so they may encounter malicious users to expose their privacy. In addition, in 90% of cases, the size of the ring is between 2 and 4, so anonymity is greatly reduced.
-
-### 3.3 ZCash
-
-#### 3.3.1 Zero Knowledge Proof and zk-SNARK
-
-**Zero Knowledge Proof**：The prover can convince the verifier that an assertion is correct without providing any useful information to the verifier。In the design of ZCash, a technique called zk-SNARK was adopted.
-
-zk-SNARK needs a NP problem as a basic problem. It is not feasible to guess the solution of a NP complete problem (NPC problem, hereinafter referred to as NP problem) with a large input by force, but it is faster to verify that a solution is corresponding to NP problem.
-
-#### 3.3.2 Operating principle of ZCcsh
-The system uses zk-SNARK to construct a decentralized mixing pool. Anonymity can be achieved by **mint** and **pour** operations.
-
-**Mint**： The user writes commitment to a list using a certain amount of `ZCash` to exchange the equivalent `commitment`. The commitment must be calculated by a one-time serial number and the user's private key, and it is irreversible.
-
-
 
 
 
