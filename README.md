@@ -52,14 +52,14 @@ In order to deal with Denial-of service(DOS) attacks. Darksend stipulates that t
 
 The mixing limit of Darksend is 1000 DASH per round, and multiple rounds of mixing can mix a considerable amount of money anonymously. Each round of the Draksend process can be considered as an independent event to enhance the anonymity of user funds.
 
-| Depth of the Chain(r)|Possible users(<a href="https://www.codecogs.com/eqnedit.php?latex=n^{r}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n^{r}" title="n^{r}" /></a>)|
+| Depth of the Chain(r)|Possible users(<a href="https://www.codecogs.com/eqnedit.php?latex=n^{r}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n^{r}" title="n^{r}" /></a>, n=3)|
 |:------:|:------:|
 |1   | 3   |
 |3 |  27  |
 |5  |  243   |
 |7  |  2187   |
 
-*Fig 3. The number of users who may participate in r mixing sessions*
+*Table 1. The number of users who may participate in r mixing sessions*
 
 Through Darksend's multi-round mixing technology, the probability of tracking a single transaction decreases exponentially with the increase of the number of rounds. Besides, 2 tools also helps to enhance anonymity。
 
@@ -76,11 +76,15 @@ In Dash Coin, there is still the risk that the master node will be controlled an
 
 ### 3.2 Monero
 
-Monero Coin proposes a hybrid encryption scheme independent of the central node. There are two key technologies of Monero Coin: **stealth addresses** and **ring signature**.
+Monero Coin proposes a hybrid encryption scheme independent of the central node. There are 3 key technologies of Monero Coin: **stealth addresses** , **ring signature** and **ringCT**
 
 #### 3.2.1 Stealth addresses
 
-**Stealth addresses** is to solve the problem of the relevance of the output address of the input. Whenever the sender wants to send a sum of money to the recipient, he first calculates a one-time public key by using elliptic curve encryption through the recipient's address (which is regenerated each time). Then the sender sends the public key along with an additional information to the block chain, and the recipient can root it. Each transaction block is detected by its own private key to determine whether the sender has sent the amount. When the recipient wants to use the amount, it can calculate a signature private key based on its own private key and transaction information, and use this private key to sign the transaction. This private key is used to sign a transaction, because the public key is one-time. Private keys are also disposable
+**Stealth addresses** is to solve the problem of the relevance of the output address of the input. Each time a sender wants to initiate a transaction, he first calculates a one-time temporary intermediate address by using the public key information of the receiver, and then sends the amount to the intermediate address. The receiver then finds the transaction by using his own public and private key information, and then carries on the expense. In this way, other users on the network, including miners, can not determine who the intermediate address belongs to, but the validity of the transaction can still be verified, and since the address is one-time, each time it is randomly generated, the attacker can not make any association with the real sender and receiver.
+
+To make the whole process clearer, here is an example as following:
+
+
 
 Different from BTC which only has one pair of keys(public key and private key), Menero has two pairs of keys(**spend key** and **view key**)
 
