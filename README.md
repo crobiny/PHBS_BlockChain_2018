@@ -52,11 +52,24 @@ In order to deal with Denial-of service(DOS) attacks. Darksend stipulates that t
 
 The mixing limit of Darksend is 1000 DASH per round, and multiple rounds of mixing can mix a considerable amount of money anonymously. Each round of the Draksend process can be considered as an independent event to enhance the anonymity of user funds.
 
-| Depth of the Chain|Possible users(<a href="https://www.codecogs.com/eqnedit.php?latex=(\frac{n}{t})^{r}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(\frac{n}{t})^{r}" title="(\frac{n}{t})^{r}" /></a>)|
+| Depth of the Chain(r)|Possible users(<a href="https://www.codecogs.com/eqnedit.php?latex=n^{r}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n^{r}" title="n^{r}" /></a>)|
 |:------:|:------:|
-|2   | 9   |
-|4 |  81  |
-|8  |  6561   |
+|1   | 3   |
+|3 |  27  |
+|5  |  243   |
+|7  |  2187   |
+
+*Fig 3. The number of users who may participate in r mixing sessions*
+
+Through Darksend's multi-round mixing technology, the probability of tracking a single transaction decreases exponentially with the increase of the number of rounds. Besides, 2 tools also helps to enhance anonymity。
+
+* **Chaining**：One transaction of a user will randomly chooses multiple Masternodes, and then mixes in these Masternodes in turn, and finally delivers one final output.
+
+* **Blinding**：Instead of sending the input and output addresses directly to the mixing pool, the user randomly selects a Masternode to transfer the input and output to a designated Masternode, which makes it difficult for the latter Masternode to obtain the real identity of the user.
+
+In this way, unless the attacker controls most Masternodes, it is almost impossible to trace back a specified transaction.
+
+**Masked masternodes**
 
 
 
