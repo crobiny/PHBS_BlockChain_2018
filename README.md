@@ -69,10 +69,19 @@ Through Darksend's multi-round mixing technology, the probability of tracking a 
 
 In this way, unless the attacker controls most Masternodes, it is almost impossible to trace back a specified transaction.
 
+#### 3.1.3 Drawbacks
 
-**Drawback**
+The disadvantages of centralized currency mixing: 
 
-In Dash Coin, there is still the risk that the master node will be controlled and the malicious users will participate in the currency mixing, which will lead to the leakage of user privacy to a certain extent.
+* Additional fees and slower speed of currency mixing
+* The risk of stealing funds, what if the trader runs? 
+* The intermediate node may leak the mixing process
+
+The disadvantage of de-centralized currency mixing: 
+* The main node is still needed to find the currency mixing node, just like centralized node
+* In the process of negotiation, the currency mixing information of the node participating in the currency mixing. 
+* Some malicious node violations may lead to failure.
+
 
 ### 3.2 Monero
 
@@ -122,11 +131,11 @@ Monero uses the [one-time ring signature technique](https://cryptonote.org/white
 To avoid **Double-Spending** attacks, Monero has a unique key image *I* for every transaction <a href="https://www.codecogs.com/eqnedit.php?latex=I=xH_{s}(P)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I=xH_{s}(P)" title="I=xH_{s}(P)" /></a>. The key images for each transaction are different. This mechanism ensures that each *P* can only be used once. The Monero network maintains a database containing all incomplete key images, so if a user tries to reuse the key, the network will reject the transaction.
 
 
-**Drawback**
+#### 3.2.3 Drawbacks
 
 Although **stealth addresses** can ensure that the addresses of the recipients change every time, so that the external attackers can not see the address correlation, they can not guarantee the anonymity between the sender and the recipient. Therefore, Monero coin proposes a ring signature scheme.
 
-Ring signatures still need to be mixed with other users'public keys, so they may encounter malicious users to expose their privacy. In addition, in 90% of cases, the size of the ring is between 2 and 4, so anonymity is greatly reduced.
+Besides, **ring signatures** still need to be mixed with other users'public keys, so they may encounter malicious users to expose their privacy. In addition, in 90% of cases, the size of the ring is between 2 and 4, so anonymity is greatly reduced.
 
 
 
