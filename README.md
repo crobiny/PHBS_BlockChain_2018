@@ -109,11 +109,17 @@ The sender calculates a temporary one-time stealth address by using the public k
 
 #### 3.2.2 Ring Signature
 
-Whenever the sender wants to establish a transaction, he will sign the transaction with his own private key and several public keys randomly selected from the public keys of other users. When verifying the signature, he also needs to use other people's public keys and parameters in the signature. At the same time, the sender's signature must also provide key image to provide proof of identity. Both the private key and key image are used. One secret at a time to ensure untraceability
+A normal signature is shown below, with only one participant, allowing one-to-one mapping:
+![](rs1.png)
+*Fig 5. Normal signature, one-to-one mapping*
 
-But how to avoid double spend attack?
+But ring signature blurs authentication, because the receiver only knows that the message comes from someone in a group, but does not know which one in the group.
+![](rs2.png)
+*Fig 6. Ring signature, many-to-many mapping*
 
-Use key image generated from private spend key
+Monero uses the [one-time ring signature technique](https://cryptonote.org/whitepaper.pdf) proposed in CryptoNote white paper. Simply speaking, this algorithm is to create an equation with multiple public keys, which can be solved by holding only one of the corresponding private keys. As we can see, each member has equal probability weights, so they can't determine which group member the signer is. As the group size increases, the probability of each member becoming a real signer decreases, which guarantees a high degree of anonymity.
+
+To avoid **Double-Spending** attacks, Monero has a unique key image *I* for every transaction <a href="https://www.codecogs.com/eqnedit.php?latex=I=xH_{s}(P)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I=xH_{s}(P)" title="I=xH_{s}(P)" /></a>. The key images for each transaction are different. This mechanism ensures that each *P* can only be used once. The Monero network maintains a database containing all incomplete key images, so if a user tries to reuse the key, the network will reject the transaction.
 
 
 **Drawback**
