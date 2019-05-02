@@ -7,7 +7,7 @@ Block chain is a distributed bookkeeping technology in P2P network. It is a supp
 
 Because different nodes need to compute and verify the same data, data on block chains are required to be public. This increases data transparency and credibility, but also brings another problem-data privacy. In block chains, some nodes may not want their own transaction data to be public, including the identity of both sides of the transaction, transaction funds. Quantity, contract content and so on. This is not only important for customers who pay attention to personal privacy, but also for financial system and supply chain system, data privacy is one of the key points of their profits. Therefore, in order to make the block chain have a wider use space, we need to take into account the multi-node trust characteristics of the block chain and ensure data privacy.
 
-In response to this demand, a lot of research work has been proposed in recent years: in the field of cryptography currency, Dash, Monero, ZCash and so on, they can solve the privacy problem of transaction data to a certain extent. The principles of privacy protection in the above studies are different. Some studies use a number of technologies to protect privacy, and the scenarios of block chains are different. We plan to summarize the privacy protection technologies of block chains.
+In response to this demand, a lot of research work has been proposed in recent years: in the field of cryptography currency, Dash, Monero and so on, they can solve the privacy problem of transaction data to a certain extent. The principles of privacy protection in the above studies are different. Some studies use a number of technologies to protect privacy, and the scenarios of block chains are different. I plan to summarize 2 kinds of mainly used privacy protection technologies of block chains: **Dash** and **Monero**
 
 ## 2.Privacy Problem of Block Chain
 
@@ -21,7 +21,7 @@ But anonymity is different from pseudonym. In computer science, anonymity refers
 
 To achieve anonymity, we need to make currency fully interchangeable. Interchangeability is the property of currency, which decides that all units of currency should be equal. Currency should not have any connection with the transaction records made with that currency, so that all currencies are equal. At the same time, any user ensures that every transaction in public accounts is honest without affecting the privacy of others.
 
-Dash coin uses a key technology called Coinjoin. Simply speaking, coin technology is a technology that mixes multiple transactions of multiple users (at least three) through some master nodes to form a single transaction. In a coin, each user provides an input and output address, and then sends it to the main node for mixing (i.e., arbitrary exchange). Input and output addresses). Trading can only be done with 0.1, 1, 10, 100 Dash Coins, which makes it more difficult for attackers to guess the degree of transaction correlation from the perspective of amount.
+Dash coin uses a key technology called Coinjoin. Simply speaking, coin technology is a technology that mixes multiple transactions of multiple users (at least 3) through some master nodes to form a single transaction. In a coin, each user provides an input and output address, and then sends it to the main node for mixing (i.e., arbitrary exchange). Input and output addresses). Trading can only be done with 0.1, 1, 10, 100 Dash Coins, which makes it more difficult for attackers to guess the degree of transaction correlation from the perspective of amount.
 
 #### 3.1.1 A simple way to mix all currencies: Coinjoin
 
@@ -41,9 +41,9 @@ As more users join the **Coinjoin** process, the difficulty of getting results w
 #### 3.1.2 Improved Coinjoin: Darksend
 
 Darksend
-* Merge multiple transactions into one transaction
-* Use the same face value of 0.1DASH, 1DASH, 10DASH and 100DASH
-* Involve at least 3 transactions
+* Merges multiple transactions into one transaction
+* Uses the same face value of 0.1DASH, 1DASH, 10DASH and 100DASH
+* Involves at least 3 transactions
 ![](darksend.png)
 
 *Fig 2. When 3 users'funds are merged into one common transaction, users will export funds in a new disrupted form.*
@@ -85,7 +85,7 @@ The disadvantage of de-centralized currency mixing:
 
 ### 3.2 Monero
 
-Monero Coin proposes a hybrid encryption scheme independent of the central node. There are 3 key technologies of Monero Coin: **stealth addresses** and **ring signature**。
+Monero Coin proposes a hybrid encryption scheme independent of the central node. There are 2 key technologies of Monero Coin: **stealth addresses** and **ring signature**。
 
 #### 3.2.1 Stealth addresses
 
@@ -93,26 +93,26 @@ Monero Coin proposes a hybrid encryption scheme independent of the central node.
 
 To make the whole process clearer, here is an example as following. Suppose Alice wants to transfer money to Bob
 
-1. Bob chooses 2 numbers *a* and *b* as his private key. According to the ECC curve, Bob calculates the corresponding public key *A=aG* and *B=bG*. G is a common base point on the curve. Bob broadcasts these 2 public keys *A* and *B* on the whole network.
-1. Alice chooses a random integer *r* as another private key, and calculates <a href="https://www.codecogs.com/eqnedit.php?latex=P=H_{s}(rA)G&plus;b" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P=H_{s}(rA)G&plus;b" title="P=H_{s}(rA)G+b" /></a>
-1. Alice calculates *R=rG*
-1. Alice broadcasts the transaction record and number *P* and *R* on the whole block chain. Because the hash function is used, according to these 2 open numbers (*P* and *R*) , no one can deduce how much *A* and *B* are, neither can it know the payee is Bob.
+1. Bob chooses 2 numbers `a` and `b` as his private key. According to the ECC curve, Bob calculates the corresponding public key `A=aG` and `B=bG`. `G` is a common base point on the curve. Bob broadcasts these 2 public keys `A` and `B` on the whole network.
+1. Alice chooses a random integer `r` as another private key, and calculates <a href="https://www.codecogs.com/eqnedit.php?latex=P=H_{s}(rA)G&plus;b" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P=H_{s}(rA)G&plus;b" title="P=H_{s}(rA)G+b" /></a>
+1. Alice calculates `R=rG`
+1. Alice broadcasts the transaction record and number `P` and `R` on the whole block chain. Because the hash function is used, according to these 2 open numbers (`P` and `R`) , no one can deduce how much `A` and `B` are, neither can it know the payee is Bob.
 ![](address.png)
 *Fig 3. Standard transaction structure*
 1. Bob scans the whole blockchain, and calculates that <a href="https://www.codecogs.com/eqnedit.php?latex=P^{'}=H_{s}(aR)G&plus;B" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P^{'}=H_{s}(aR)G&plus;B" title="P^{'}=H_{s}(aR)G+B" /></a>. If this money is for Bob, he will find that *P'=P*(Because Alice uses *A* that Bob broadcasts, and calculates *R=rA*. According to ECC algorithm, *rA=aR*, so <a href="https://www.codecogs.com/eqnedit.php?latex=P^{'}=H_{s}(aR)G&plus;B=H_{s}(rA)G&plus;B=P" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P^{'}=H_{s}(aR)G&plus;B=H_{s}(rA)G&plus;B=P" title="P^{'}=H_{s}(aR)G+B=H_{s}(rA)G+B=P" /></a>. So Bob knows that the money belongs to him.)
-1. Bob calculates <a href="https://www.codecogs.com/eqnedit.php?latex=x=H_{s}(aR)&plus;b" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x=H_{s}(aR)&plus;b" title="x=H_{s}(aR)+b" /></a>. *x* is the private key of public key *P*, because <a href="https://www.codecogs.com/eqnedit.php?latex=xG=H_{s}(aR)G&plus;bG=H_{s}(aR)G&plus;B=P" target="_blank"><img src="https://latex.codecogs.com/gif.latex?xG=H_{s}(aR)G&plus;bG=H_{s}(aR)G&plus;B=P" title="xG=H_{s}(aR)G+bG=H_{s}(aR)G+B=P" /></a>. The private key *x* can't even be figured out by Alice. So Bob can use this key to spend the money in the future.
+1. Bob calculates <a href="https://www.codecogs.com/eqnedit.php?latex=x=H_{s}(aR)&plus;b" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x=H_{s}(aR)&plus;b" title="x=H_{s}(aR)+b" /></a>. `x` is the private key of public key `P`, because <a href="https://www.codecogs.com/eqnedit.php?latex=xG=H_{s}(aR)G&plus;bG=H_{s}(aR)G&plus;B=P" target="_blank"><img src="https://latex.codecogs.com/gif.latex?xG=H_{s}(aR)G&plus;bG=H_{s}(aR)G&plus;B=P" title="xG=H_{s}(aR)G+bG=H_{s}(aR)G+B=P" /></a>. The private key `x` can't even be figured out by Alice. So Bob can use this key to spend the money in the future.
 ![](address2.png)
 *Fig 4. Incoming transaction check*
 
-From the process above we can see that, the pressure is enormous for Bob, because he needs to scan all the transactions on the block chain, and then calculate the corresponding information for comparison to find the transactions sent to him. Monero coin has put forward an improved scheme for this purpose. We can notice that when calculating P', we only use (a, B), which is half of the private key, and when calculating the final private key x, we must use (a, b). So if a third party knows a, he can calculate P', but he can not calculate the corresponding private key x to spend the money. Because the third party doesn't know the other half of the private key *b*, Bob can give half of his private key (a, B) to the third party, thereby authorizing the third party to help check all transactions belonging to Bob on the block chain, thus reducing Bob's pressure, but ultimately only Bob can spend the money.
+From the process above we can see that, the pressure is enormous for Bob, because he needs to scan all the transactions on the block chain, and then calculate the corresponding information for comparison to find the transactions sent to him. Monero coin has put forward an improved scheme for this purpose. We can notice that when calculating P', we only use `(a, B)`, which is half of the private key, and when calculating the final private key `x`, we must use `(a, b)`. So if a third party knows a, he can calculate P', but he can not calculate the corresponding private key `x` to spend the money. Because the third party doesn't know the other half of the private key *b*, Bob can give half of his private key `(a, B)` to the third party, thereby authorizing the third party to help check all transactions belonging to Bob on the block chain, thus reducing Bob's pressure, but ultimately only Bob can spend the money.
 
 As we can see from the process above, different from BTC which only has one pair of keys(public key and private key), Menero has two pairs of keys(**spend key** and **view key**)
 
-**Spend key**: *b*(private) and *B*(public). In spend key, the public key is used to join ring transaction and verify key image, and the private key is used to create a key image.
+**Spend key**: `b`(private) and `B`(public). In spend key, the public key is used to join ring transaction and verify key image, and the private key is used to create a key image.
 
-**View key**: *a*(private) and *A*(public). In view key, the public key is used to create **Stealth addresses**, and the private key is used to scan the whole blockchain and check whether there are some transactions sent to itself.
+**View key**: `a`(private) and `A`(public). In view key, the public key is used to create **Stealth addresses**, and the private key is used to scan the whole blockchain and check whether there are some transactions sent to itself.
 
-The sender calculates a temporary one-time stealth address by using the public key of the receiver's view key, and sends the money to the address. Then the receiver scans the block chain and finds that the transaction can take the money away by using the private key of his view key. Others on the network do not know who the transaction is sent to, only the recipient himself. Knowing ensures anonymity of transactions
+The sender calculates a temporary one-time stealth address by using the public key of the receiver's view key, and sends the money to the address. Then the receiver scans the block chain and finds that the transaction can take the money away by using the private key of his view key. Others on the network do not know who the transaction is sent to, only the recipient himself knowd, which ensures anonymity of transactions
 
 #### 3.2.2 Ring Signature
 
