@@ -150,3 +150,13 @@ Besides, **ring signatures** still need to be mixed with other users'public keys
 ## 5.Conclusion
 
 Privacy protection in block chain technology has always suffered a lot of criticisms. On the one hand, the transaction privacy of ordinary users on block chain should be protected, on the other hand, malicious users should be prevented from using it as a platform for illegal transactions. Current anonymity technology can not guarantee anonymity and decentralization perfectly, which also brings risks to users in transaction and privacy. I believe that with the emergence of new technologies, block chains can provide an open and credible technological support for the digital world while protecting privacy.
+
+
+Reference
+
+1. (n.d.). Retrieved from [https://bihu.com/article/1424993](https://bihu.com/article/1424993)
+1. Saberhagen, N. V. (n.d.). [CryptoNote v 2.0](https://cryptonote.org/whitepaper.pdf) (Publication).
+1. Dash Coin Whitepaper. (n.d.). Retrieved from https://dashpay.atlassian.net/wiki/spaces/DOC/pages/5472261/Whitepaper
+1. Yu, Z., Au, M. H., Yu, J., Yang, R., Xu, Q., & Lau, W. F. (2019). New Empirical Traceability Analysis of CryptoNote-Style Blockchains. Financial Cryptography and Data Security (FC).Retrieved from https://fc19.ifca.ai/preproceedings/69-preproceedings.pdf
+1. 什么是门罗币？终极入门指南. (n.d.). Retrieved from https://blog.csdn.net/simple_the_best/article/details/79339579
+1. 达世币白皮书：一个专注于保护隐私的数字货币. (n.d.). Retrieved from https://www.8btc.com/article/69654
