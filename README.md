@@ -165,3 +165,7 @@ Privacy protection in block chain technology has always suffered a lot of critic
 [5] 什么是门罗币？终极入门指南. (n.d.). Retrieved from https://blog.csdn.net/simple_the_best/article/details/79339579
 
 [6] 达世币白皮书：一个专注于保护隐私的数字货币. (n.d.). Retrieved from https://www.8btc.com/article/69654
+
+[7] 祝烈煌, 高峰, 沈蒙, 李艳东, 郑宝昆, 毛洪亮, & 吴震. (2017). 区块链隐私保护研究综述. 计算机研究与发展, 2170-2186.
+
+[8] 张宪, 蒋钰钊, & 闫莺. (2017). 区块链隐私技术综述. 信息安全研究, (2017 年 11), 981-989.
