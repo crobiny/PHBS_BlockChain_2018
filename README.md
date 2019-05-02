@@ -71,21 +71,21 @@ In this way, unless the attacker controls most Masternodes, it is almost impossi
 
 #### 3.1.3 Drawbacks
 
+Although Dash has some improvement in anonymity compared with BTC, there is still some risks of privacy disclosure.
+
 The disadvantages of centralized currency mixing: 
 
-* Additional fees and slower speed of currency mixing
-* The risk of stealing funds, what if the trader runs? 
-* The intermediate node may leak the mixing process
+* Additional fees and slower speed of coinjoining
+* The mixing process needs the participation of middlemen. There may be the risk that the middlemen are not honest enough and run away.
 
 The disadvantage of de-centralized currency mixing: 
-* The main node is still needed to find the currency mixing node, just like centralized node
-* In the process of negotiation, the currency mixing information of the node participating in the currency mixing. 
+* Users need to find the Masternode to complete the mixing process, which brings the risk of centralization.
 * Some malicious node violations may lead to failure.
 
 
 ### 3.2 Monero
 
-Monero Coin proposes a hybrid encryption scheme independent of the central node. There are 3 key technologies of Monero Coin: **stealth addresses** , **ring signature** and **ringCT**
+Monero Coin proposes a hybrid encryption scheme independent of the central node. There are 3 key technologies of Monero Coin: **stealth addresses** and **ring signature**。
 
 #### 3.2.1 Stealth addresses
 
@@ -106,13 +106,11 @@ To make the whole process clearer, here is an example as following. Suppose Alic
 
 From the process above we can see that, the pressure is enormous for Bob, because he needs to scan all the transactions on the block chain, and then calculate the corresponding information for comparison to find the transactions sent to him. Monero coin has put forward an improved scheme for this purpose. We can notice that when calculating P', we only use (a, B), which is half of the private key, and when calculating the final private key x, we must use (a, b). So if a third party knows a, he can calculate P', but he can not calculate the corresponding private key x to spend the money. Because the third party doesn't know the other half of the private key *b*, Bob can give half of his private key (a, B) to the third party, thereby authorizing the third party to help check all transactions belonging to Bob on the block chain, thus reducing Bob's pressure, but ultimately only Bob can spend the money.
 
+As we can see from the process above, different from BTC which only has one pair of keys(public key and private key), Menero has two pairs of keys(**spend key** and **view key**)
 
+**Spend key**: *b*(private) and *B*(public). In spend key, the public key is used to join ring transaction and verify key image, and the private key is used to create a key image.
 
-Different from BTC which only has one pair of keys(public key and private key), Menero has two pairs of keys(**spend key** and **view key**)
-
-**Spend key**: In spend key, the public key is used to join ring transaction and verify key image, and the private key is used to create a key image.
-
-**View key**: In view key, the public key is used to create **Stealth addresses**, and the private key is used to scan the whole blockchain and check whether there are some transactions sent to itself.
+**View key**: *a*(private) and *A*(public). In view key, the public key is used to create **Stealth addresses**, and the private key is used to scan the whole blockchain and check whether there are some transactions sent to itself.
 
 The sender calculates a temporary one-time stealth address by using the public key of the receiver's view key, and sends the money to the address. Then the receiver scans the block chain and finds that the transaction can take the money away by using the private key of his view key. Others on the network do not know who the transaction is sent to, only the recipient himself. Knowing ensures anonymity of transactions
 
@@ -133,12 +131,22 @@ To avoid **Double-Spending** attacks, Monero has a unique key image *I* for ever
 
 #### 3.2.3 Drawbacks
 
-Although **stealth addresses** can ensure that the addresses of the recipients change every time, so that the external attackers can not see the address correlation, they can not guarantee the anonymity between the sender and the recipient. Therefore, Monero coin proposes a ring signature scheme.
+Although **stealth addresses** can ensure that the addresses of the recipients change every time, so that the external attackers can not see the address correlation, they can not guarantee the anonymity between the sender and the recipient. 
 
-Besides, **ring signatures** still need to be mixed with other users'public keys, so they may encounter malicious users to expose their privacy. In addition, in 90% of cases, the size of the ring is between 2 and 4, so anonymity is greatly reduced.
+Besides, **ring signatures** still need to be mixed with other users'public keys, so they may encounter malicious users to expose their privacy. 
+
+**In addition, in 90% of cases, the size of the ring is between 2 and 4, so anonymity is greatly reduced.**
 
 
 
 ## 4.Comparison
 
-## 5.Expectation
+| Name|Technical characteristics|Advantage|Disadvantage|
+|:------:|:------:|:------:|:------:|
+|Dash   | Coinjoining; Chaining; Blinding   | Intuitive  | Depend on Masternode |
+|Monero |  Stealth address; Ring signature  | Independ of other nodes | Depend on public keys of others; In most cases the length of ring is very short (2-4)|
+
+
+## 5.Conclusion
+
+Privacy protection in block chain technology has always suffered a lot of criticisms. On the one hand, the transaction privacy of ordinary users on block chain should be protected, on the other hand, malicious users should be prevented from using it as a platform for illegal transactions. Current anonymity technology can not guarantee anonymity and decentralization perfectly, which also brings risks to users in transaction and privacy. I believe that with the emergence of new technologies, block chains can provide an open and credible technological support for the digital world while protecting privacy.
